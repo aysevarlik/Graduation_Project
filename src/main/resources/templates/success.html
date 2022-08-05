@@ -1,0 +1,32 @@
+<!doctype html>
+<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+
+    <title>Questionnaire</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="html5,css3,js,jquery,bootstrap,react,javase" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="questionnaire.css" th:href="@{/css/questionnaire.css}" />
+
+
+
+</head>
+<body>
+<div class="container1 mt-5">
+    <h1 class="display-5">Thank you for your feedback!</h1>
+    <p></p>
+    <button class="btn btn-dark mt-3"><a style="color: white; text-decoration: none" th:href="@{/customer/save}">Back to Survey</a></button>
+    <button class="btn btn-dark mt-3"><a style="color: white; text-decoration: none" th:href="@{/customer/export/excel}">Excel File</a></button>
+</div>
+</body>
+
+
+</html>

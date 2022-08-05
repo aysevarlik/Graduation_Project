@@ -1,0 +1,65 @@
+<!doctype html>
+<html  th:lang="${#locale.language}"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+
+    <title>Questionnaire</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="html5,css3,js,jquery,bootstrap,react,javase" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="questionnaire.css" th:href="@{/css/questionnaire.css}" />
+
+    <!-- jquery  -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+    <div class="container1 mt-5">
+        <h1 class="display-5">Your feedback is valuable to us! :)</h1>
+        <p>We are waiting for your positive or negative comments about your
+            shopping in order to improve ourselves.</p>
+        <form th:method="post" th:object="${customer}" th:action="@{/customer/save}">
+            <div class="container2">
+                <div class="row mt-5">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="customerName" placeholder="Name" autofocus th:field="*{customerName}">
+                        <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="text-danger text-uppercase"></div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="customerSurname" placeholder="Surname" th:field="*{customerSurname}">
+                        <div th:if="${#fields.hasErrors('customerSurname')}" th:errors="*{customerSurname}" class="text-danger text-uppercase"></div>
+                    </div>
+                </div>
+                    <div class="form-group mt-2">
+                        <input type="text" class="form-control" id="customerEmail" placeholder="Email" th:field="*{customerEmail}">
+                        <div th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}" class="text-danger text-uppercase"></div>
+                    </div>
+
+                <div class="form-group">
+                    <textarea name="message" class="form-control mt-2" id="customerMessage" placeholder="Message" th:field="*{customerMessage}"></textarea>
+                    <div th:if="${#fields.hasErrors('customerMessage')}" th:errors="*{customerMessage}" class="text-danger text-uppercase"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Send Message</button>
+        </form>
+<!--        <button class="btn btn-primary mt-3"><a style="color: white; text-decoration: none" th:href="@{/customer/export/excel}">Excel File</a></button>-->
+    </div>
+</body>
+
+
+</html>
