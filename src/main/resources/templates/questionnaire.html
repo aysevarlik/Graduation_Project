@@ -37,25 +37,25 @@
                 <div class="row mt-5">
                     <div class="form-group col-md-6">
                         <input type="text" class="form-control" id="customerName" placeholder="Name" autofocus th:field="*{customerName}">
-                        <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="text-danger text-uppercase"></div>
+                        <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="text-dark text-uppercase"></div>
                     </div>
 
                     <div class="form-group col-md-6">
                         <input type="text" class="form-control" id="customerSurname" placeholder="Surname" th:field="*{customerSurname}">
-                        <div th:if="${#fields.hasErrors('customerSurname')}" th:errors="*{customerSurname}" class="text-danger text-uppercase"></div>
+                        <div th:if="${#fields.hasErrors('customerSurname')}" th:errors="*{customerSurname}" class="text-dark text-uppercase"></div>
                     </div>
                 </div>
                     <div class="form-group mt-2">
                         <input type="text" class="form-control" id="customerEmail" placeholder="Email" th:field="*{customerEmail}">
-                        <div th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}" class="text-danger text-uppercase"></div>
+                        <div th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}" class="text-dark text-uppercase"></div>
                     </div>
 
                 <div class="form-group">
                     <textarea name="message" class="form-control mt-2" id="customerMessage" placeholder="Message" th:field="*{customerMessage}"></textarea>
-                    <div th:if="${#fields.hasErrors('customerMessage')}" th:errors="*{customerMessage}" class="text-danger text-uppercase"></div>
+                    <div th:if="${#fields.hasErrors('customerMessage')}" th:errors="*{customerMessage}" class="text-dark text-uppercase"></div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success mt-3">Send Message</button>
+            <button type="submit" class="send_button btn-2">Send Message</button>
         </form>
 <!--        <button class="btn btn-primary mt-3"><a style="color: white; text-decoration: none" th:href="@{/customer/export/excel}">Excel File</a></button>-->
     </div>

@@ -2,8 +2,6 @@ package com.aysevarlik.satisfactionsurveyproject.security;
 
 import com.aysevarlik.satisfactionsurveyproject.Bean.PasswordEncoderBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.h2.H2ConsoleProperties;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,20 +23,15 @@ public class Security extends WebSecurityConfigurerAdapter{
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/css/**","/login").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/customer/export/excel").permitAll()
-                .antMatchers(HttpMethod.GET,"/api/v1/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/v1/**").permitAll()
-                .antMatchers(HttpMethod.PUT,"/api/v1/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/customer/export/excel").hasAnyRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/logout").invalidateHttpSession(true);
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true);
 
-        http.csrf().ignoringAntMatchers(String.valueOf(HttpMethod.POST),"/customer/save").disable();
         http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
 
     }
@@ -52,8 +45,11 @@ public class Security extends WebSecurityConfigurerAdapter{
         managerBuilder
                 .inMemoryAuthentication()
                 .withUser("Ayse")
-                .password( encoderBean.passwordEncoder()
-                        .encode("root")).roles("USER");
-
+                .password( encoderBean.passwordEncoder().encode("admin"))
+                .roles("ADMIN")
+                .and()
+                .withUser("Enes")
+                .password(encoderBean.passwordEncoder().encode("user"))
+                .roles("USER");
     }
 }

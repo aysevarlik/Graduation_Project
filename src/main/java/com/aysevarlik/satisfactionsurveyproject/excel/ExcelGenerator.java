@@ -13,18 +13,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-
-import static org.apache.poi.ss.util.CellUtil.createCell;
 
 public class ExcelGenerator {
 
     private List<CustomerDto> listCustomers;
-    private List<BaseEntity> list;
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
 
@@ -49,10 +43,6 @@ public class ExcelGenerator {
             createCell(row, 2, "Customer Surname", style);
             createCell(row, 3, "Customer Mail", style);
             createCell(row, 4, "Customer Message", style);
-            createCell(row,5,"Created By",style);
-            createCell(row,6,"Created Date",style);
-            createCell(row,7,"Update By",style);
-            createCell(row,8,"Update Date",style);
         }
 
         private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -90,10 +80,6 @@ public class ExcelGenerator {
             createCell(row, columnCount++, customerDto.getCustomerSurname(), style);
             createCell(row, columnCount++, customerDto.getCustomerEmail(), style);
             createCell(row, columnCount++, customerDto.getCustomerMessage(), style);
-            createCell(row,columnCount++,customerDto.getCreatedBy(),style);
-            createCell(row,columnCount++,customerDto.getCreatedDate(),style);
-            createCell(row,columnCount++,customerDto.getUpdateBy(),style);
-            createCell(row,columnCount++,customerDto.getUpdateDate(),style);
         }
     }
 

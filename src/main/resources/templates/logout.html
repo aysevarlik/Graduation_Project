@@ -28,22 +28,7 @@
 
 </head>
 <body>
-    <div class="content">
-        <header>Hello!</header>
-        <form method="post" action="/login" th:name="login">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" >
-            <div class="field">
-                <span class="fa fa-user"></span>
-                <input type="text" required autofocus placeholder="Enter Username" th:name="username">
-            </div>
-            <div class="field space">
-                <span class="fa fa-lock"></span>
-                <input type="password" class="pass-key" required placeholder="Enter Password" th:name="password">
-                <span class="show">SHOW</span>
-            </div>
-            <button type="submit" class="btn-login btn1">LOGIN</button>
-        </form>
-    </div>
+
 </body>
 
 

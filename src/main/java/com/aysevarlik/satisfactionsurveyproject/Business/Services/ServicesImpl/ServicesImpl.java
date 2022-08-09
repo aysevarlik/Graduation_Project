@@ -2,7 +2,6 @@ package com.aysevarlik.satisfactionsurveyproject.Business.Services.ServicesImpl;
 
 import com.aysevarlik.satisfactionsurveyproject.Business.Dto.CustomerDto;
 import com.aysevarlik.satisfactionsurveyproject.Business.Services.IServices;
-import com.aysevarlik.satisfactionsurveyproject.data.Entity.BaseEntity;
 import com.aysevarlik.satisfactionsurveyproject.data.Entity.CustomerEntity;
 import com.aysevarlik.satisfactionsurveyproject.data.Repository.ICustomerRepo;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -47,7 +45,6 @@ public class ServicesImpl implements IServices {
     @PostMapping("/create/customer")
     public CustomerDto createCustomer(@RequestBody CustomerDto customerDto) {
         CustomerEntity entity = new CustomerEntity();
-//        CustomerEntity entity = DtoToEntity(customerDto);
         entity.setCustomerName(customerDto.getCustomerName());
         entity.setCustomerSurname(customerDto.getCustomerSurname());
         entity.setCustomerEmail(customerDto.getCustomerEmail());

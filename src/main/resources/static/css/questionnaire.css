@@ -42,3 +42,39 @@ body:after{
     width: 80%;
     margin-left: 50px;
 }
+.send_button {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 45px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+.send_button:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.send_button:focus {
+    outline: none;
+}
+.send_button.btn-2 {
+    background-image: linear-gradient(
+            to right,
+            #a8a0fc,
+            #f4a6ff,
+            #2b80b7,
+            #c706f3
+    );
+    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+}

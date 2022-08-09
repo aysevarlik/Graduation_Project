@@ -6,13 +6,17 @@ import com.aysevarlik.satisfactionsurveyproject.data.Entity.CustomerEntity;
 import com.aysevarlik.satisfactionsurveyproject.data.Repository.ICustomerRepo;
 import com.aysevarlik.satisfactionsurveyproject.excel.ExcelGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -45,16 +49,16 @@ public class CustomerController {
         ExcelGenerator generator = new ExcelGenerator(list);
         generator.generate(response);
         model.addAttribute("excel",response);
-        return "questionnaire";
+        return "success";
     }
 
     //http://localhost:8081/login
     @GetMapping("/login")
     public String getLogin(@RequestParam(name = "error", required = false) String error, Model model){
         if (error!=null){
-            model.addAttribute("user","yanlış girdiniz");
-        }else{
             model.addAttribute("user","boş bırakılamaz");
+        }else{
+            model.addAttribute("user","yanlış girdiniz");
         }
         return "login";
     }
@@ -85,6 +89,21 @@ public class CustomerController {
     @GetMapping("/success")
     public String getSuccess(Model model){
         return "success";
+    }
+
+    //http://localhost:8081/logout
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/customer/save";
+    }
+
+    @GetMapping("/error")
+    public String error() {
+        return "error";
     }
 
 }
