@@ -6,7 +6,7 @@ import com.aysevarlik.satisfactionsurveyproject.data.Entity.CustomerEntity;
 import com.aysevarlik.satisfactionsurveyproject.data.Repository.ICustomerRepo;
 import com.aysevarlik.satisfactionsurveyproject.excel.ExcelGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -14,8 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -49,7 +50,7 @@ public class CustomerController {
         ExcelGenerator generator = new ExcelGenerator(list);
         generator.generate(response);
         model.addAttribute("excel",response);
-        return "success";
+        return "questionnaire";
     }
 
     //http://localhost:8081/login
@@ -102,7 +103,8 @@ public class CustomerController {
     }
 
     @GetMapping("/error")
-    public String error() {
+    public String error(Model model) {
+        model.addAttribute("message","OOPS!");
         return "error";
     }
 

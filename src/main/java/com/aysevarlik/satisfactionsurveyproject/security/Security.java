@@ -33,7 +33,6 @@ public class Security extends WebSecurityConfigurerAdapter{
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true);
 
         http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
-
     }
 
     @Autowired
@@ -51,5 +50,6 @@ public class Security extends WebSecurityConfigurerAdapter{
                 .withUser("Enes")
                 .password(encoderBean.passwordEncoder().encode("user"))
                 .roles("USER");
+
     }
 }

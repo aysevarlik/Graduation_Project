@@ -2,7 +2,6 @@ package com.aysevarlik.satisfactionsurveyproject.excel;
 
 import com.aysevarlik.satisfactionsurveyproject.Business.Dto.CustomerDto;
 import com.aysevarlik.satisfactionsurveyproject.data.Entity.BaseEntity;
-import com.aysevarlik.satisfactionsurveyproject.data.Entity.CustomerEntity;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -19,6 +18,7 @@ import java.util.List;
 public class ExcelGenerator {
 
     private List<CustomerDto> listCustomers;
+    private List<BaseEntity> list;
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
 

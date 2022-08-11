@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @Builder
 
-public class CustomerDto extends BaseEntity {
+public class CustomerDto extends BaseEntity{
     private Long customerId;
 
     @NotEmpty(message = "boş bırakılamaz")
