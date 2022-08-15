@@ -99,7 +99,6 @@ public class CustomerController {
 
     @GetMapping("/error")
     public String error(Model model) {
-        model.addAttribute("message","OOPS!");
         return "error";
     }
 
