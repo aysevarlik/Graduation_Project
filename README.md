@@ -26,7 +26,7 @@ Kullanıcı olarak giriş yapabilmek için:
 
 olarak girilmelidir.
 ---
-![Screenshot](localhost_8081_login.png)
+![Screenshot](http://localhost_8081_login.png)
 ![Screenshot](localhost_8081_customer_save.png)
 ![Screenshot](localhost_8081_success.png)
 ![Screenshot](localhost_8081_h2-console_login.do_jsessionid=439fb2e94b96b4acb863a16710b82aa3.png)
