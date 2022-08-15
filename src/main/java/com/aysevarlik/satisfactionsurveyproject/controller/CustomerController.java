@@ -6,7 +6,6 @@ import com.aysevarlik.satisfactionsurveyproject.data.Entity.CustomerEntity;
 import com.aysevarlik.satisfactionsurveyproject.data.Repository.ICustomerRepo;
 import com.aysevarlik.satisfactionsurveyproject.excel.ExcelGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -14,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@SessionAttributes({"customerInfo"})
 public class CustomerController {
 
     @Autowired
@@ -56,11 +54,6 @@ public class CustomerController {
     //http://localhost:8081/login
     @GetMapping("/login")
     public String getLogin(@RequestParam(name = "error", required = false) String error, Model model){
-        if (error!=null){
-            model.addAttribute("user","boş bırakılamaz");
-        }else{
-            model.addAttribute("user","yanlış girdiniz");
-        }
         return "login";
     }
 
