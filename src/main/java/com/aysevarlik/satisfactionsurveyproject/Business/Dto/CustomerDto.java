@@ -18,17 +18,17 @@ import javax.validation.constraints.NotEmpty;
 public class CustomerDto extends BaseEntity{
     private Long customerId;
 
-    @NotEmpty(message = "boş bırakılamaz")
+    @NotEmpty(message = "The name field is required!")
     private String customerName;
 
-    @NotEmpty(message = "boş bırakılamaz")
+    @NotEmpty(message = "The surname field is required!")
     private String customerSurname;
 
-    @NotEmpty(message = "boş bırakılamaz")
-    @Email(message = "yanlış format")
+    @NotEmpty(message = "The email field is required!")
+    @Email(message = "Email must be written in the correct format")
     private String customerEmail;
 
-    @NotEmpty(message = "boş bırakılamaz")
+    @NotEmpty(message = "The message field is required!")
     private String customerMessage;
 
 

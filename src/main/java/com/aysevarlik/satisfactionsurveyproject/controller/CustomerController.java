@@ -51,6 +51,7 @@ public class CustomerController {
         return "questionnaire";
     }
 
+    //this link is not for login.
     //http://localhost:8081/login
     @GetMapping("/login")
     public String getLogin(@RequestParam(name = "error", required = false) String error, Model model){
@@ -58,6 +59,7 @@ public class CustomerController {
     }
 
 
+    //please click this link for login
     //http://localhost:8081/customer/save
     @GetMapping("customer/save")
     public String getCustomer(Model model){
